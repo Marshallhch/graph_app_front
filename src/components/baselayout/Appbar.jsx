@@ -3,6 +3,7 @@ import { MdOutlineMenu } from "react-icons/md";
 import { Icons } from "./../../assets/icons";
 import AppbarProfile from "./AppbarProfile";
 import ModeCtrl from "./ModeCtrl";
+import AppbarLang from "./AppbarLang";
 
 const Appbar = () => {
   return (
@@ -29,6 +30,8 @@ const Appbar = () => {
               </div>
             </form>
           </div>
+
+          <AppbarLang />
 
           <button className="w-8 h-8 rounded-md relative">
             <img src={Icons.NotificationOrange} alt="" className="w-6" />
