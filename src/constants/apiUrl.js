@@ -5,4 +5,4 @@ const COUNTRIES_API_URL =
 
 const GET_VISITORS_API_URL = `${DOMAIN}/visitors`;
 
-export { COUNTRIES_API_URL };
+export { COUNTRIES_API_URL, GET_VISITORS_API_URL };

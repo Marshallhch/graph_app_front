@@ -48,7 +48,7 @@ const AppbarLang = () => {
     fetchCountriesData();
   }, []);
 
-  console.log(selectedCountry);
+  // console.log(selectedCountry);
   return (
     <div className="appbar-dropdown lang-dropdown w-30 h-10 relative">
       <div
