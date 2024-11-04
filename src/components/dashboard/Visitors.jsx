@@ -12,6 +12,36 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import PropTypes from "prop-types";
+
+const formatLegendValue = (value) => {
+  return value.replace("_", " "); // _를 공백으로 변경
+};
+
+const formatTooltipValue = (name, value) => {
+  return `${name.replace("_", " ")} : ${value}`;
+};
+
+const CustomTooltip = ({ payload }) => {
+  if (!payload || !payload.length) return null;
+
+  // console.log(payload);
+
+  return (
+    <div className="custom-recharts-tooltip">
+      <p className="recharts-tooltip-label">{payload[0].payload?.month}</p>
+      <ul className="recharts-tooltip-item-list">
+        {payload.map((item, index) => (
+          <li key={index}>{formatTooltipValue(item.name, item.value)}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+CustomTooltip.propTypes = {
+  payload: PropTypes.any,
+};
 
 const Visitors = () => {
   const state = useSelector((state) => state.apis.visitorsData);
@@ -21,7 +51,7 @@ const Visitors = () => {
     dispatch(fetchVisitors());
   }, [dispatch]); // dispatch가 변경될 때 한번 실행
 
-  console.log(state);
+  // console.log(state);
   return (
     <div className="block-wrap">
       <HeadTitle title="Visitors Insights" />
@@ -69,14 +99,31 @@ const Visitors = () => {
                 fontSize: 14,
               }}
             />
-            <Tooltip />
-            <Legend />
+            <Tooltip content={<CustomTooltip />} />
+            <Legend iconType="square" formatter={formatLegendValue} />
+
             <Line
               dot={false}
               type="basis"
-              dataKey="new_customers"
+              dataKey="new_customer"
               stroke="#f64e60"
-              strockWidth={3}
+              strokeWidth={2}
+            />
+
+            <Line
+              dot={false}
+              type="basis"
+              dataKey="loyal_customer"
+              stroke="#a700ff"
+              strokeWidth={2}
+            />
+
+            <Line
+              dot={false}
+              type="basis"
+              dataKey="unique_customer"
+              stroke="#3cd856"
+              strokeWidth={2}
             />
           </LineChart>
         </ResponsiveContainer>

@@ -1,5 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { GET_VISITORS_API_URL } from "../../constants/apiUrl";
+import {
+  GET_VISITORS_API_URL,
+  GET_REVENUE_API_URL,
+} from "../../constants/apiUrl";
 import { getRequest } from "./../../constants/requestMethods";
 
 // reducers와 extraReducers의 차이를 간단히 말하자면, 슬라이스를 정의할 때 reducers는 슬라이스의 상태를 어떻게 업데이트할지에 대한 로직을 정의하는 반면 extraReducers는 외부에서 생성된 액션에 대한 리듀서 로직을 정의한다는 것이다.
@@ -26,6 +29,11 @@ export const fetchVisitors = createFetchThunk(
   GET_VISITORS_API_URL // 요청 url
 ); // thunk 함수 호출
 
+export const fetchRevenue = createFetchThunk(
+  "fetchRevenue", // action type
+  GET_REVENUE_API_URL // 요청 url
+); // thunk 함수 호출
+
 // handleFulfilled 함수 정의 : 요청 성공 시 상태 업데이트 로직을 별도의 함수로 분리
 const handleFulfilled = (stateKey) => (state, action) => {
   state[stateKey] = action.payload; // action.payload에 응답 데이터가 들어있음
@@ -42,11 +50,14 @@ const apiSlice = createSlice({
   initialState: {
     // 초기 상태 지정
     visitorsData: null,
+    revenueData: null,
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchVisitors.fulfilled, handleFulfilled("visitorsData")) // 요청 성공 시
-      .addCase(fetchVisitors.rejected, handleRejected); // 요청 실패 시
+      .addCase(fetchVisitors.rejected, handleRejected) // 요청 실패 시
+      .addCase(fetchRevenue.fulfilled, handleFulfilled("revenueData"))
+      .addCase(fetchRevenue.rejected, handleRejected);
   },
 }); // slice 객체 저장
 
