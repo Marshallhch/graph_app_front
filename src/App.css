@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+body {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  background: #efefef;
+  color: #333;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+  max-width: 100%;
+  filter: invert(0) brightness(1);
+}
+
+button {
+  border: none;
+  outline: 0;
+  background: transparent;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+/* Each Box Common Style */
+.block-wrap {
+  border-radius: 6px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 0.25rem rgba(75, 70, 92, 0.1);
+}
+
+.dark .block-wrap {
+  background: rgb(3, 7, 18);
+  box-shadow: 0 0 0.25rem rgba(165, 163, 174, 0.3);
+}
