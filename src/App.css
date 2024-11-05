@@ -100,3 +100,17 @@ a {
   font-size: 14px;
   margin-top: 5px;
 }
+
+/* Top Product common table style */
+.tbl-title {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid #f0f9ff;
+  font-weight: 400;
+  text-align: left;
+}
+
+.tbl-data {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+}

@@ -4,6 +4,9 @@ import {
   GET_REVENUE_API_URL,
   GET_CUSTOMERS_API_URL,
   GET_TARGET_REALITY_API_URL,
+  GET_TOP_PRODUCTS_API_URL,
+  GET_SALES_MAP_API_URL,
+  GET_VOLUME_SERVICES_API_URL,
 } from "../../constants/apiUrl";
 import { getRequest } from "./../../constants/requestMethods";
 
@@ -44,10 +47,28 @@ export const fetchCustomers = createFetchThunk(
   GET_CUSTOMERS_API_URL
 );
 
-// get custormers data
+// get target reality data
 export const fetchTargetReality = createFetchThunk(
   "fetchTargetReality",
   GET_TARGET_REALITY_API_URL
+);
+
+// get top products data
+export const fetchTopProducts = createFetchThunk(
+  "fetchTopProducts",
+  GET_TOP_PRODUCTS_API_URL
+);
+
+// get sales map data
+export const fetchSalesMap = createFetchThunk(
+  "fetchSalesMap",
+  GET_SALES_MAP_API_URL
+);
+
+// get volume services data
+export const fetchVolumeServices = createFetchThunk(
+  "fetchVolumeServices",
+  GET_VOLUME_SERVICES_API_URL
 );
 
 // handleFulfilled 함수 정의 : 요청 성공 시 상태 업데이트 로직을 별도의 함수로 분리
@@ -69,20 +90,38 @@ const apiSlice = createSlice({
     revenueData: null,
     customersData: null,
     targetRealityData: null,
+    topProductsData: null,
+    salesMapData: null,
+    volumeServicesData: null,
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchVisitors.fulfilled, handleFulfilled("visitorsData")) // 요청 성공 시
       .addCase(fetchVisitors.rejected, handleRejected) // 요청 실패 시
+
       .addCase(fetchRevenue.fulfilled, handleFulfilled("revenueData"))
       .addCase(fetchRevenue.rejected, handleRejected)
+
       .addCase(fetchCustomers.fulfilled, handleFulfilled("customersData"))
       .addCase(fetchCustomers.rejected, handleRejected)
+
       .addCase(
         fetchTargetReality.fulfilled,
         handleFulfilled("targetRealityData")
       )
-      .addCase(fetchTargetReality.rejected, handleRejected);
+      .addCase(fetchTargetReality.rejected, handleRejected)
+
+      .addCase(fetchTopProducts.fulfilled, handleFulfilled("topProductsData"))
+      .addCase(fetchTopProducts.rejected, handleRejected)
+
+      .addCase(fetchSalesMap.fulfilled, handleFulfilled("salesMapData"))
+      .addCase(fetchSalesMap.rejected, handleRejected)
+
+      .addCase(
+        fetchVolumeServices.fulfilled,
+        handleFulfilled("volumeServicesData")
+      )
+      .addCase(fetchVolumeServices.rejected, handleRejected);
   },
 }); // slice 객체 저장
 
