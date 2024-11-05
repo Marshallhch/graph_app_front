@@ -2,6 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   GET_VISITORS_API_URL,
   GET_REVENUE_API_URL,
+  GET_CUSTOMERS_API_URL,
+  GET_TARGET_REALITY_API_URL,
 } from "../../constants/apiUrl";
 import { getRequest } from "./../../constants/requestMethods";
 
@@ -24,15 +26,29 @@ const createFetchThunk = (actionType, apiURL) => {
   });
 };
 
+// get visitors data
 export const fetchVisitors = createFetchThunk(
   "fetchVisitors", // action type
   GET_VISITORS_API_URL // 요청 url
 ); // thunk 함수 호출
 
+// get revenue data
 export const fetchRevenue = createFetchThunk(
-  "fetchRevenue", // action type
-  GET_REVENUE_API_URL // 요청 url
-); // thunk 함수 호출
+  "fetchRevenue",
+  GET_REVENUE_API_URL
+);
+
+// get custormers data
+export const fetchCustomers = createFetchThunk(
+  "fetchCustomers",
+  GET_CUSTOMERS_API_URL
+);
+
+// get custormers data
+export const fetchTargetReality = createFetchThunk(
+  "fetchTargetReality",
+  GET_TARGET_REALITY_API_URL
+);
 
 // handleFulfilled 함수 정의 : 요청 성공 시 상태 업데이트 로직을 별도의 함수로 분리
 const handleFulfilled = (stateKey) => (state, action) => {
@@ -51,13 +67,22 @@ const apiSlice = createSlice({
     // 초기 상태 지정
     visitorsData: null,
     revenueData: null,
+    customersData: null,
+    targetRealityData: null,
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchVisitors.fulfilled, handleFulfilled("visitorsData")) // 요청 성공 시
       .addCase(fetchVisitors.rejected, handleRejected) // 요청 실패 시
       .addCase(fetchRevenue.fulfilled, handleFulfilled("revenueData"))
-      .addCase(fetchRevenue.rejected, handleRejected);
+      .addCase(fetchRevenue.rejected, handleRejected)
+      .addCase(fetchCustomers.fulfilled, handleFulfilled("customersData"))
+      .addCase(fetchCustomers.rejected, handleRejected)
+      .addCase(
+        fetchTargetReality.fulfilled,
+        handleFulfilled("targetRealityData")
+      )
+      .addCase(fetchTargetReality.rejected, handleRejected);
   },
 }); // slice 객체 저장
 
