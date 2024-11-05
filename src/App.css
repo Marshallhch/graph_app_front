@@ -5,6 +5,12 @@
   font-family: inherit;
 }
 
+.App {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
 body {
   font-weight: 400;
   font-size: 1rem;

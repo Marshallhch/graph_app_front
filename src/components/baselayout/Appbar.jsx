@@ -4,13 +4,21 @@ import { Icons } from "./../../assets/icons";
 import AppbarProfile from "./AppbarProfile";
 import ModeCtrl from "./ModeCtrl";
 import AppbarLang from "./AppbarLang";
+import { useDispatch, useSelector } from "react-redux";
+import { setSidebarOpen } from "../../redux/slices/sidebarSlice";
 
 const Appbar = () => {
+  const isSidebarOpen = useSelector((state) => state.sidebar.isSidebarOpen);
+  const dispatch = useDispatch();
+  // console.log(isSidebarOpen);
   return (
-    <div className="appbar-wrapper ml-[calc(20%+14px)] w-[calc(80%-28px)] py-3 px-6 bg-white dark:bg-gray-950 rounded-sm dark:shadow-[0_0_0.25rem_rgba(255,255,255,0.3)] shadow-[0_0_0.25rem_rgba(165,163,174,0.3)]">
+    <div className="appbar-wrapper lg:ml-[calc(20%+14px)] lg:w-[calc(80%-28px)] w-full py-3 px-6 bg-white dark:bg-gray-950 rounded-sm dark:shadow-[0_0_0.25rem_rgba(255,255,255,0.3)] shadow-[0_0_0.25rem_rgba(165,163,174,0.3)]">
       <div className="appbar-content flex justify-between items-center">
         <div className="appbar-left flex items-center gap-x-3">
-          <button className="hidden">
+          <button
+            className="lg:hidden"
+            onClick={() => dispatch(setSidebarOpen())}
+          >
             <MdOutlineMenu size={24} />
           </button>
           <h3 className="appbar-title text-xl font-semibold">Dashboard</h3>
