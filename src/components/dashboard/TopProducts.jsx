@@ -13,16 +13,16 @@ const TopProducts = () => {
 
   // console.log(state);
   return (
-    <div className="block-wrap my-[14px]">
+    <div className="block-wrap my-[14px] w-full lg:w-auto">
       <HeadTitle title="Top Products" />
       <div className="tbl-products">
-        <table className="w-full border-collapse min-w-[500px]">
+        <table className="border-collapse md:min-w-[500px] w-full">
           <thead>
             <tr>
               <th className="tbl-title">#</th>
               <th className="tbl-title">Name</th>
               <th className="tbl-title">Popularity</th>
-              <th className="tbl-title">Sales</th>
+              <th className="tbl-title hidden md:table-cell">Sales</th>
             </tr>
           </thead>
           <tbody>
@@ -38,7 +38,7 @@ const TopProducts = () => {
                     ></div>
                   </div>
                 </td>
-                <td className="tbl-data">
+                <td className="tbl-data hidden md:table-cell">
                   <div className="bg-[#f0f9ff] text-[#0095ff] flex items-center justify-center border border-[#0095ff] rounded-md min-w-[45px] h-6 text-[0.625rem]">
                     {item.salespercent}%
                   </div>

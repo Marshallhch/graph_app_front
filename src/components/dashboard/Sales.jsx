@@ -20,11 +20,11 @@ const Sales = () => {
         </div>
       </div>
 
-      <div className="sales-cards grid grid-cols-4 gap-4 mt-6">
+      <div className="sales-cards sm:grid sm:grid-cols-4 gap-4 mt-6 flex flex-wrap">
         {SALES_LISTS.map((item, index) => (
           <div
             key={index}
-            className="card-item rounded-md py-4 px-[18px] border border-gray-500"
+            className="card-item rounded-md py-4 px-[18px] border border-gray-500 w-[calc(50%-8px)] sm:w-auto"
           >
             <div className="card-item-icon rounded-full w-11 h-11 flex items-center justify-center border border-gray-950 dark:border-gray-500">
               <img

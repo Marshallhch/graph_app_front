@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTargetReality } from "../../redux/slices/apiSlice";
 import HeadTitle from "./HeadTitle";
 
-import { BarChart, Bar, ResponsiveContainer, Tooltip, XAxis } from "recharts";
+import { BarChart, Bar, ResponsiveContainer, XAxis } from "recharts";
 import { TARGET_REALITY_LISTS } from "../arrayLists/menuLists";
 
 const TargetReality = () => {
@@ -16,7 +16,7 @@ const TargetReality = () => {
 
   // console.log(state);
   return (
-    <div className="block-wrap mt-[14px] ml-[14px]">
+    <div className="block-wrap mt-[14px] lg:ml-[14px] w-full lg:w-auto">
       <HeadTitle title="Target vs Reality" />
       <div className="bar-chart w-full h-[180px]">
         <ResponsiveContainer width="100%" height="100%">
