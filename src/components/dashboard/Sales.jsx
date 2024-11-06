@@ -5,7 +5,7 @@ import { SALES_LISTS } from "./../arrayLists/menuLists";
 
 const Sales = () => {
   return (
-    <div className="block-wrap">
+    <div className="block-wrap w-full">
       <div className="block-head flex items-center justify-between">
         <HeadTitle title="Today's Sales" />
         <div className="block-head-export">
